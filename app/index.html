@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,6 +47,7 @@
             <a href="#about">О себе</a>
           </li>
         </ul>
+        <button class="header__btn"></button>
       </nav>
     </header>
     <section class="title">
@@ -69,7 +70,7 @@
           />
         </svg>
         <h2>Личная информация</h2>
-        <form action="" class="personal-info animate-input">
+        <form action="personal-info" class="personal-info animate-input">
           <div>
             <input
               id="form-Name"
@@ -80,56 +81,64 @@
           </div>
           <div class="select">
             <div class="select__title">Год рождения</div>
-            <ul  data-simplebar  data-simplebar-auto-hide="false" class="select__list">
-              <li value="2000">
+            <ul
+              data-simplebar
+              data-simplebar-auto-hide="false"
+              class="select__list"
+            >
+              <li data-age="2000">
                 2000
               </li>
-              <li value="1999">
+              <li data-age="1999">
                 1999
               </li>
-              <li value="1998">
+              <li data-age="1998">
                 1998
               </li>
-              <li value="1997">
+              <li data-age="1997">
                 1997
               </li>
-              <li value="1996">
+              <li data-age="1996">
                 1996
               </li>
-              <li value="1995">
+              <li data-age="1995">
                 1995
               </li>
-              <li value="1994">
+              <li data-age="1994">
                 1994
               </li>
-              <li value="1993" class="active">
+              <li data-age="1993" class="active">
                 1993
               </li>
-              <li value="1992">
+              <li data-age="1992">
                 1992
               </li>
-              <li value="1991">
+              <li data-age="1991">
                 1991
               </li>
-              <li value="1990">
+              <li data-age="1990">
                 1990
               </li>
             </ul>
           </div>
           <div>
-            <input id="form-Address" required /><label for="form-Address"
+            <input id="form-Address" required value="г. Днепр" /><label
+              for="form-Address"
               >Место проживания</label
             >
           </div>
           <div>
-            <input id="form-Skype" required /><label for="form-Skype"
+            <input id="form-Skype" required value="live:val.altynova" /><label
+              for="form-Skype"
               >Skype</label
             >
           </div>
           <div>
-            <input id="form-E-mail" required /><label for="form-E-mail"
-              >E-mail</label
-            >
+            <input
+              id="form-E-mail"
+              required
+              value="val.altynova@gmail.com"
+            /><label for="form-E-mail">E-mail</label>
           </div>
         </form>
       </div>
@@ -149,7 +158,7 @@
           />
         </svg>
         <h2>Расскажите о своем опыте</h2>
-        <form action="" class="experience-form">
+        <form action="experience-form" class="experience-form">
           <div class="experience-form__column">
             <div>
               <input id="checkbox1" type="checkbox" value="" checked />
@@ -214,7 +223,9 @@
           <div class="range-slider__option">
             <p data-value="0">Не владею</p>
             <p data-value="26">Использую готовые решения</p>
-            <p data-value="51">Использую готовые решения и умею их переделывать</p>
+            <p data-value="51">
+              Использую готовые решения и умею их переделывать
+            </p>
             <p data-value="77">Пишу сложный JS с нуля</p>
           </div>
           <div class="range-slider__band">
@@ -287,19 +298,24 @@
           ожидаете от работы у нас.
         </p>
 
-        <form action="" class="about-form animate-input">
+        <form action="about-form" class="about-form animate-input">
           <div>
-            <textarea rows="5" cols="48" id="textarea" required></textarea
+            <textarea id="textarea" required></textarea
             ><label for="textarea">Понравилась тем, что...</label>
           </div>
           <p><input type="submit" value="Готово" class="btn" /></p>
         </form>
       </div>
     </section>
-    
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src=" https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
     <script src="assets/template/scripts/profile.min.js"></script>
   </body>
 </html>

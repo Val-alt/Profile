@@ -1,14 +1,22 @@
 .JavaScript-level {
-  padding-top: 117px;
+    margin-top: 7.5rem;
 }
 
 .range-slider {
   padding-top: 5px;
+
+  @media only screen and (max-width: 576px) {
+  padding: 5px 10px 0 10px;
+  }
 }
 
 .range-slider__band {
   position: relative;
   margin-bottom: 10px;
+}
+
+.range-slider__band svg {
+  width: 100%;
 }
 
 .range-slider__band-color {

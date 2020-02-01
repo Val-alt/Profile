@@ -5,6 +5,12 @@
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
+  font-size: 16px;
+
+  @media only screen and (max-width: 576px) {
+    font-size: 10px;
+    padding-top: 51px;
+  }
 }
 
 a {
@@ -14,14 +20,15 @@ a {
 
 .container {
   max-width: 768px;
-  
+  padding: 0 10px;
   margin: 0 auto;
   text-align: center;
 }
 
 h1 {
   font-weight: 100;
-  font-size: 69px;
+  font-size: 4.1em;
+  letter-spacing: 2px;
 }
 
 h2 {
@@ -33,6 +40,37 @@ h2 {
 .header {
   padding: 30px 0;
   border-bottom: 1px solid #d9d9d9;
+  background-color: #fff;
+
+  @media only screen and (max-width: 576px) {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 0;
+  }
+}
+
+.header__btn {
+  display: none;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/arrow.svg");
+  background-size: cover;
+  width: 20px;
+  height: 12px;
+  margin-right: 12px;
+  transition: 0.3s;
+
+  @media only screen and (max-width: 576px) {
+    display: block;
+    float: right;
+  }
+}
+
+.header__btn--open {
+  transform: rotate(180deg);
+  transition: 0.3s;
 }
 
 .nav {
@@ -42,8 +80,27 @@ h2 {
   list-style: none;
   color: #50649a;
   text-decoration: none;
-
   font-size: 14px;
+  padding: 0 12%;
+
+  @media only screen and (max-width: 576px) {
+    display: none;
+    position: absolute;
+    top: 51px;
+    left: 0;
+    flex-wrap: wrap;
+    background-color: #fff;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #d9d9d9;
+  }
+}
+
+.nav li {
+  @media only screen and (max-width: 576px) {
+    flex: 0 0 100%;
+    padding: 6px 0;
+  }
 }
 
 .nav .active {

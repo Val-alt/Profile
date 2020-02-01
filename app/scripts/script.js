@@ -1,18 +1,30 @@
-
 var App = {
   options: {},
 
   init: function() {
     this.select();
     this.rangeSlider();
+    this.navMobile();
   },
 
   select: function() {
+    for (let value of $(".select__list li")) {
+      //если заранее выбран год, то подстановка года в titile
+      if ($(value).hasClass("active")) {
+        $(".select__title")
+          .html($(value).html())
+          .css("color", "#000")
+          .addClass("check");
+      }
+    }
+
     $(".select").click(() => {
+      // открывать скрывать список
       $(".select__list").toggle();
       $(".select__title").toggleClass("select__title--open");
 
       $(document).mouseup(e => {
+        // скрывать если клик вне элемента
         if (
           !$(".select").is(e.target) &&
           $(".select").has(e.target).length === 0
@@ -24,6 +36,12 @@ var App = {
     });
 
     $(".select__list li").click(e => {
+      let newTitle = $(e.target); // присвоить titile выбранный год
+      $(".select__title")
+        .html(newTitle[0].dataset.age)
+        .css("color", "#000")
+        .addClass("check");
+
       for (let value of $(".select__list li")) {
         if ($(value).hasClass("active")) {
           if ($(e.target) !== $(value)) {
@@ -32,31 +50,21 @@ var App = {
         }
       }
       $(e.target).addClass("active");
-
-      $(document).mouseup(e => {
-        if (
-          !$(".select").is(e.target) &&
-          $(".select").has(e.target).length === 0
-        ) {
-          $(".select__list").hide();
-          $(".select__title").removeClass("select__title--open");
-        }
-      });
     });
   },
 
   rangeSlider: () => {
     $(() => {
-      $("#slider").slider();
-      $("#slider").slider("option", "value", 70);
+      $("#slider").slider(); // инициализация
+      $("#slider").slider("option", "value", 79);
       let bandColor = $(".range-slider__band-color");
       let selection = $("#slider").slider("value");
-      // console.log(selection + 10);
       let position = selection + "%";
       let opt = [0, 26, 51, 77];
       bandColor.css("width", position);
 
       for (let value of opt) {
+        // подсветка текста если заранее задано положение ползунка
         if (selection >= value) {
           let elem = $("[data-value=" + value + "]")[0];
 
@@ -68,11 +76,11 @@ var App = {
             }
           }
           $(elem).addClass("active");
-
         }
       }
 
       $(".ui-slider-handle").mousedown(() => {
+        // подсветка текста при движении, закрашивание полосы
         this.onmousemove = e => {
           selection = $("#slider").slider("value");
           position = selection + "%";
@@ -90,17 +98,17 @@ var App = {
                 }
               }
               $(elem).addClass("active");
-
             }
           }
         };
       });
 
       $(".range-slider__option p").click(e => {
+        // выставление ползунка при нажатии на текст
         let value = $(e.target)[0].dataset.value;
         if (value == 77) {
           value = 100;
-        } 
+        }
         position = value + "%";
         $("#slider").slider("option", "value", value);
         bandColor.css("width", position);
@@ -117,62 +125,29 @@ var App = {
     });
   },
 
-  link: function() {
-    // Cache selectors
-    var lastId,
-      topMenu = $(".nav"),
-      topMenuHeight = topMenu.outerHeight() + 15,
-      // All list items
-      menuItems = topMenu.find("a"),
-      // Anchors corresponding to menu items
-      scrollItems = menuItems.map(function() {
-        var item = $($(this).attr("href"));
-        if (item.length) {
-          return item;
-        }
-      });
-
-    // Bind click handler to menu items
-    // so we can get a fancy scroll animation
-    menuItems.click(function(e) {
-      var href = $(this).attr("href"),
-        offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
-      $("html, body")
-        .stop()
-        .animate(
-          {
-            scrollTop: offsetTop
-          },
-          400
-        );
-      e.preventDefault();
+  navMobile: () => {
+    $(".header__btn").click(() => {
+      $(".nav").toggle();
+      $(".header__btn").toggleClass("header__btn--open");
+      console.log($("document").scrollTop());
     });
 
-    // Bind to scroll
-    $(window).scroll(function() {
-      // Get container scroll position
-      var fromTop = $(this).scrollTop() + topMenuHeight;
+    $(".nav a").click(() => {
+      $(".nav").hide();
+      $(".header__btn").removeClass("header__btn--open");
+    });
 
-      // Get id of current scroll item
-      var cur = scrollItems.map(function() {
-        if ($(this).offset().top < fromTop) return this;
-      });
-      // Get the id of the current element
-      cur = cur[cur.length - 1];
-      var id = cur && cur.length ? cur[0].id : "";
-
-      if (lastId !== id) {
-        lastId = id;
-        // Set/remove active class
-        menuItems
-          //   .parent()
-          .removeClass("active")
-          .end()
-          .filter("[href='#" + id + "']")
-          //   .parent()
-          .addClass("active");
+    $(document).mouseup(e => {
+      if (
+        !$(".header").is(e.target) &&
+        $(".header").has(e.target).length === 0
+      ) {
+        $(".nav").hide();
+        $(".header__btn").removeClass("select__title--open");
       }
     });
+
+    
   }
 };
 

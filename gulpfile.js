@@ -5,15 +5,12 @@ var gulp = require("gulp"),
   newer = require("gulp-newer"),
   cssmin = require("gulp-cssnano"),
   imagemin = require("gulp-imagemin"),
-  // uglify = require("gulp-uglify"),
   uglifyes = require("uglify-es"),
   composer = require("gulp-uglify/composer"),
   uglify = composer(uglifyes, console),
   browserSync = require("browser-sync"),
   del = require("del");
 babel = require("gulp-babel");
-
-BABEL_POLYFILL = "./node_modules/babel-polyfill/browser.js";
 
 var paths = { src: "app/", dist: "dist/assets/template/" },
   src = {
@@ -41,36 +38,18 @@ gulp.task("sass", function() {
   );
 });
 
-gulp.task("js-baby", function() {
+gulp.task("js", function() {
   return (
     gulp
       .src(["app/scripts/*.js"])
       // .pipe(uglify())
-      .pipe(
-        babel({
-          presets: ["@babel/env"]
-        })
-      )
+    //   .pipe(babel({
+    //       presets: ['@babel/env']
+    //   }))
       .pipe(concat("profile.min.js"))
       .pipe(gulp.dest(dist.js))
   );
 });
-
-gulp.task("js", function() {
-    return (
-        gulp
-        .src([
-            "app/scripts/*.js",
-        ])
-        // .pipe(uglify())
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
-        .pipe(concat("profile.min.js"))
-        .pipe(gulp.dest(dist.js))
-    );
-});
-
 
 gulp.task("img", function() {
   return gulp
@@ -80,22 +59,11 @@ gulp.task("img", function() {
     .pipe(gulp.dest(dist.img));
 });
 
-gulp.task("fonts", function() {
-  return gulp
-    .src(src.fonts)
-    .pipe(newer(dist.fonts))
-    .pipe(gulp.dest(dist.sass));
-});
-
 gulp.task("html", function() {
   return gulp
     .src("app/*.html")
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.reload({ stream: true }));
-});
-
-gulp.task("ico", function() {
-  return gulp.src("app/*.png").pipe(gulp.dest("dist"));
 });
 
 // очистка папки с готовым проектом
@@ -105,7 +73,7 @@ gulp.task("clean", function() {
 
 gulp.task(
   "build",
-  gulp.parallel("clean", "html", "ico", "sass", "js", "img", "fonts")
+  gulp.parallel("clean", "html", "sass", "js", "img")
 );
 
 gulp.task("browser-sync", function() {
@@ -127,8 +95,5 @@ gulp.task(
       .on("change", browserSync.reload);
     gulp.watch(src.js, gulp.parallel("js")).on("change", browserSync.reload);
     gulp.watch(src.img, gulp.parallel("img")).on("change", browserSync.reload);
-    gulp
-      .watch(src.fonts, gulp.parallel("fonts"))
-      .on("change", browserSync.reload);
   })
 );

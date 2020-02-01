@@ -1,9 +1,15 @@
+@charset "UTF-8";
 * {
   outline: none; }
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto", sans-serif;
+  font-size: 16px; }
+  @media only screen and (max-width: 576px) {
+    body {
+      font-size: 10px;
+      padding-top: 51px; } }
 
 a {
   color: inherit;
@@ -11,12 +17,14 @@ a {
 
 .container {
   max-width: 768px;
+  padding: 0 10px;
   margin: 0 auto;
   text-align: center; }
 
 h1 {
   font-weight: 100;
-  font-size: 69px; }
+  font-size: 4.1em;
+  letter-spacing: 2px; }
 
 h2 {
   font-size: 30px;
@@ -25,7 +33,37 @@ h2 {
 
 .header {
   padding: 30px 0;
-  border-bottom: 1px solid #d9d9d9; }
+  border-bottom: 1px solid #d9d9d9;
+  background-color: #fff; }
+  @media only screen and (max-width: 576px) {
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      padding: 20px 0; } }
+
+.header__btn {
+  display: none;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/arrow.svg");
+  background-size: cover;
+  width: 20px;
+  height: 12px;
+  margin-right: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s; }
+  @media only screen and (max-width: 576px) {
+    .header__btn {
+      display: block;
+      float: right; } }
+
+.header__btn--open {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: 0.3s;
+  transition: 0.3s; }
 
 .nav {
   display: -webkit-box;
@@ -35,7 +73,25 @@ h2 {
   list-style: none;
   color: #50649a;
   text-decoration: none;
-  font-size: 14px; }
+  font-size: 14px;
+  padding: 0 12%; }
+  @media only screen and (max-width: 576px) {
+    .nav {
+      display: none;
+      position: absolute;
+      top: 51px;
+      left: 0;
+      flex-wrap: wrap;
+      background-color: #fff;
+      width: 100%;
+      padding: 10px 0;
+      border-bottom: 1px solid #d9d9d9; } }
+
+@media only screen and (max-width: 576px) {
+  .nav li {
+    -webkit-box-flex: 0;
+            flex: 0 0 100%;
+    padding: 6px 0; } }
 
 .nav .active {
   color: #2b2b2b; }
@@ -46,11 +102,17 @@ h2 {
   background-size: cover;
   padding-top: 60px; }
 
+#personal-info {
+  padding-top: 8px; }
+
 .personal-info {
   max-width: 520px;
   margin: 0 auto;
   display: block;
-  padding-top: 22px; }
+  padding-top: 1.2rem; }
+  @media only screen and (max-width: 576px) {
+    .personal-info {
+      padding: 0 10px; } }
 
 .personal-info input {
   display: block;
@@ -59,52 +121,67 @@ h2 {
   border-radius: 5px;
   padding: 18px 9px;
   text-align: center;
-  font-size: 20px; }
+  font-size: 1.2rem; }
 
 .personal-info input:focus {
   border-color: #435993; }
 
 .animate-input > div {
   position: relative;
-  margin-bottom: 24px; }
+  margin-bottom: 1.5rem; }
 
-.personal-info > div > label,
-.about-form > div > label {
+.animate-input > div > label {
   position: absolute;
   color: #c8c8c8;
-  font-size: 24px; }
+  font-size: 1.5rem; }
+  @media only screen and (max-width: 576px) {
+    .animate-input > div > label {
+      font-size: 1.2rem; } }
 
-.personal-info label,
-.about-form label {
+.animate-input label {
   position: absolute;
-  top: 10px;
+  top: 14px;
   left: 0;
   width: 100%;
   -webkit-transition: 0.2s;
   transition: 0.2s; }
 
-.personal-info input:focus ~ label,
-.personal-info input:valid ~ label,
-.about-form textarea:focus ~ label,
-.about-form textarea:valid ~ label {
+.animate-input input:focus ~ label,
+.animate-input input:valid ~ label,
+.animate-input textarea:focus ~ label,
+.animate-input textarea:valid ~ label {
   top: 3px;
   font-size: 14px; }
 
 .select {
   position: relative;
-  width: 320px;
+  max-width: 320px;
   margin: 0 auto;
   font-size: 20px;
   color: #c8c8c8;
-  font-size: 24px;
-  text-align: center; }
+  text-align: center;
+  font-size: 1.5rem; }
+  @media only screen and (max-width: 576px) {
+    .select {
+      font-size: 1.2rem; } }
 
 .select__title {
   border: 1px solid #e5e5e5;
   border-radius: 5px;
-  padding: 16px 10px;
+  padding: 13px 10px;
   z-index: 5;
   cursor: pointer; }
+
+.select__title.check::before {
+  content: "Год рождения";
+  position: absolute;
+  top: 3px;
+  font-size: 14px;
+  color: #c8c8c8;
+  height: 20px;
+  text-align: center;
+  width: 100%;
+  left: 0; }
 
 .select__title::after {
   content: "";
@@ -150,7 +227,7 @@ h2 {
   background: #d9d9d9; }
 
 .experience {
-  padding-top: 47px; }
+  margin-top: 3rem; }
 
 .experience-form {
   display: -webkit-box;
@@ -159,6 +236,15 @@ h2 {
           justify-content: space-between;
   text-align: left;
   padding-top: 21px; }
+  @media only screen and (max-width: 576px) {
+    .experience-form {
+      flex-wrap: wrap; } }
+
+@media only screen and (max-width: 576px) {
+  .experience-form__column {
+    -webkit-box-flex: 0;
+            flex: 0 0 85%;
+    margin-left: 30px; } }
 
 .experience-form__column div {
   margin-bottom: 14px; }
@@ -206,14 +292,20 @@ h2 {
   font-size: 16px; }
 
 .JavaScript-level {
-  padding-top: 117px; }
+  margin-top: 7.5rem; }
 
 .range-slider {
   padding-top: 5px; }
+  @media only screen and (max-width: 576px) {
+    .range-slider {
+      padding: 5px 10px 0 10px; } }
 
 .range-slider__band {
   position: relative;
   margin-bottom: 10px; }
+
+.range-slider__band svg {
+  width: 100%; }
 
 .range-slider__band-color {
   position: absolute;
@@ -283,7 +375,7 @@ h2 {
   display: none; }
 
 .about {
-  padding-top: 75px; }
+  margin-top: 75px; }
 
 .about-form textarea {
   resize: none;
@@ -291,11 +383,21 @@ h2 {
   border-radius: 5px;
   padding: 24px 10px;
   font-size: 20px;
-  font-family: inherit; }
+  font-family: inherit;
+  width: 500px;
+  height: 130px; }
+  @media only screen and (max-width: 576px) {
+    .about-form textarea {
+      width: auto;
+      height: 100px;
+      max-width: 100%; } }
 
 .about-form {
   display: inline-block;
-  margin-top: 37px; }
+  margin-top: 2.5rem; }
+  @media only screen and (max-width: 576px) {
+    .about-form {
+      padding: 0 10px; } }
 
 .about-form label {
   text-align: left;
@@ -320,6 +422,6 @@ h2 {
   border-radius: 10px;
   padding: 16px 33px;
   border: none;
-  margin-top: 41px;
-  margin-bottom: 41px;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
   cursor: pointer; }
