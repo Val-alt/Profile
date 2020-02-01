@@ -1,0 +1,62 @@
+* {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.container {
+  max-width: 768px;
+  
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 69px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin-top: 17px;
+}
+
+.header {
+  padding: 30px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  list-style: none;
+  color: #50649a;
+  text-decoration: none;
+
+  font-size: 14px;
+}
+
+.nav .active {
+  color: #2b2b2b;
+}
+
+.title {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 60%,
+      rgb(255, 255, 255)
+    ),
+    url("../img/ian-froome-375650.jpg");
+  background-size: cover;
+  padding-top: 60px;
+}

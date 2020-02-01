@@ -1,0 +1,61 @@
+.experience {
+  padding-top: 47px;
+}
+
+.experience-form {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  padding-top: 21px;
+}
+
+.experience-form__column div {
+  margin-bottom: 14px;
+}
+
+.experience-form input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  margin: 10px 0 0 20px;
+}
+
+.experience-form input + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.experience-form input + label:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1px solid #435993;
+  background: transparent;
+  transition: 0.2s;
+}
+
+.experience-form input:hover + label:before {
+  background: #e9efff;
+}
+
+.experience-form input:checked + label:before {
+  background: #435993;
+}
+
+.experience-form input:checked + label:after {
+  content: "";
+  background-image: url("../img/Shape.svg");
+  position: absolute;
+  top: 6px;
+  left: 2px;
+  width: 12px;
+  height: 8px;
+}
+
+.experience-form label {
+  font-size: 16px;
+}

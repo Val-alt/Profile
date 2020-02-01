@@ -9,6 +9,7 @@
   "author": "ValAlt",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.8.4",
     "browser-sync": "^2.26.7",
     "composer": "^4.1.0",
     "del": "^5.1.0",
@@ -20,6 +21,13 @@
     "gulp-newer": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
+    "js-yaml": "^3.13.1",
     "uglify-es": "^3.3.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-polyfill": "^6.26.0",
+    "gulp-babel": "^8.0.0"
   }
 }
