@@ -137,17 +137,17 @@ var App = {
       $(".header__btn").removeClass("header__btn--open");
     });
 
-    $(document).mouseup(e => {
-      if (
-        !$(".header").is(e.target) &&
-        $(".header").has(e.target).length === 0
-      ) {
-        $(".nav").hide();
-        $(".header__btn").removeClass("select__title--open");
-      }
-    });
-
-    
+    if ($(window).width() <= 576) {
+      $(document).mouseup(e => {
+        if (
+          !$(".header").is(e.target) &&
+          $(".header").has(e.target).length === 0
+        ) {
+          $(".nav").hide();
+          $(".header__btn").removeClass("select__title--open");
+        }
+      });
+    }
   }
 };
 
