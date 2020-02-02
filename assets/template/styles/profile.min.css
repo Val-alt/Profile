@@ -40,7 +40,7 @@ h2 {
   padding: 30px 0;
   border-bottom: 1px solid #d9d9d9;
   background-color: #fff; }
-  @media only screen and (max-width: 576px) {
+  @media only screen and (max-width: 768px) {
     .header {
       position: fixed;
       top: 0;
@@ -58,7 +58,7 @@ h2 {
   text-decoration: none;
   font-size: 14px;
   padding: 0 12%; }
-  @media only screen and (max-width: 576px) {
+  @media only screen and (max-width: 768px) {
     .nav {
       display: none;
       position: absolute;
@@ -70,7 +70,7 @@ h2 {
       padding: 10px 0;
       border-bottom: 1px solid #d9d9d9; } }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
   .nav li {
     -webkit-box-flex: 0;
             flex: 0 0 100%;
@@ -98,7 +98,7 @@ h2 {
   width: 20px;
   height: 12px;
   margin-right: 12px; }
-  @media only screen and (max-width: 576px) {
+  @media only screen and (max-width: 768px) {
     .header__btn {
       display: block;
       float: right; } }

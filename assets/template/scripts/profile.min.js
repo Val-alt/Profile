@@ -132,7 +132,7 @@ var App = {
       console.log($("document").scrollTop());
     });
 
-    if ($(window).width() <= 576) {
+    if ($(window).width() <= 768) {
       $(".nav a").click(() => {
         $(".nav").hide();
         $(".header__btn").removeClass("header__btn--open");
