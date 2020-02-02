@@ -1,8 +1,8 @@
-#personal-info {
-    padding-top: 8px;
+.personal-info {
+  padding-top: 8px;
 }
 
-.personal-info {
+.personal-info-form {
   max-width: 520px;
   margin: 0 auto;
   display: block;
@@ -13,7 +13,7 @@
   }
 }
 
-.personal-info input {
+.personal-info-form input {
   display: block;
   width: 96%;
   border: 1px solid #e5e5e5;
@@ -23,7 +23,7 @@
   font-size: 1.2rem;
 }
 
-.personal-info input:focus {
+.personal-info-form input:focus {
   border-color: #435993;
 }
 
@@ -47,7 +47,6 @@
   top: 14px;
   left: 0;
   width: 100%;
-  transition: 0.2s;
 }
 
 .animate-input input:focus ~ label,
@@ -56,6 +55,11 @@
 .animate-input textarea:valid ~ label {
   top: 3px;
   font-size: 14px;
+}
+
+.animate-input textarea:focus ~ label,
+.animate-input textarea:valid ~ label {
+  display: none;
 }
 
 .select {
@@ -78,6 +82,10 @@
   padding: 13px 10px;
   z-index: 5;
   cursor: pointer;
+}
+
+.select__title:focus {
+  border-color: #435993;
 }
 
 .select__title.check::before {

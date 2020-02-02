@@ -49,7 +49,8 @@
   transition: 0.2s;
 }
 
-.experience-form input:hover + label:before {
+.experience-form input:hover + label:before,
+.experience-form input:focus + label:before {
   background: #e9efff;
 }
 

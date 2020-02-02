@@ -56,7 +56,7 @@ var App = {
   rangeSlider: () => {
     $(() => {
       $("#slider").slider(); // инициализация
-      $("#slider").slider("option", "value", 79);
+      $("#slider").slider("option", "value", 70);
       let bandColor = $(".range-slider__band-color");
       let selection = $("#slider").slider("value");
       let position = selection + "%";
@@ -132,12 +132,12 @@ var App = {
       console.log($("document").scrollTop());
     });
 
-    $(".nav a").click(() => {
-      $(".nav").hide();
-      $(".header__btn").removeClass("header__btn--open");
-    });
-
     if ($(window).width() <= 576) {
+      $(".nav a").click(() => {
+        $(".nav").hide();
+        $(".header__btn").removeClass("header__btn--open");
+      });
+
       $(document).mouseup(e => {
         if (
           !$(".header").is(e.target) &&

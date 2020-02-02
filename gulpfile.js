@@ -43,9 +43,9 @@ gulp.task("js", function() {
     gulp
       .src(["app/scripts/*.js"])
       // .pipe(uglify())
-    //   .pipe(babel({
-    //       presets: ['@babel/env']
-    //   }))
+      // .pipe(babel({
+      //     presets: ['@babel/env']
+      // }))
       .pipe(concat("profile.min.js"))
       .pipe(gulp.dest(dist.js))
   );

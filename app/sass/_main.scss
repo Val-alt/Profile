@@ -1,5 +1,6 @@
 * {
   outline: none;
+  transition: .3s;
 }
 
 body {
@@ -11,6 +12,10 @@ body {
     font-size: 10px;
     padding-top: 51px;
   }
+}
+
+fieldset {
+  border: none;
 }
 
 a {
@@ -51,28 +56,6 @@ h2 {
   }
 }
 
-.header__btn {
-  display: none;
-  background-color: transparent;
-  border: none;
-  background-image: url("../img/arrow.svg");
-  background-size: cover;
-  width: 20px;
-  height: 12px;
-  margin-right: 12px;
-  transition: 0.3s;
-
-  @media only screen and (max-width: 576px) {
-    display: block;
-    float: right;
-  }
-}
-
-.header__btn--open {
-  transform: rotate(180deg);
-  transition: 0.3s;
-}
-
 .nav {
   display: flex;
   justify-content: space-around;
@@ -103,6 +86,11 @@ h2 {
   }
 }
 
+.nav a:focus,
+.nav a:hover {
+  text-decoration: underline;
+}
+
 .nav .active {
   color: #2b2b2b;
 }
@@ -117,3 +105,24 @@ h2 {
   background-size: cover;
   padding-top: 60px;
 }
+
+.header__btn {
+  display: none;
+  background-color: transparent;
+  border: none;
+  background-image: url("../img/arrow.svg");
+  background-size: cover;
+  width: 20px;
+  height: 12px;
+  margin-right: 12px;
+
+  @media only screen and (max-width: 576px) {
+    display: block;
+    float: right;
+  }
+}
+
+.header__btn--open {
+  transform: rotate(180deg);
+}
+
