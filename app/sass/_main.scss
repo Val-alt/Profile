@@ -1,6 +1,6 @@
 * {
   outline: none;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 body {
@@ -115,6 +115,7 @@ h2 {
   width: 20px;
   height: 12px;
   margin-right: 12px;
+  cursor: pointer;
 
   @media only screen and (max-width: 768px) {
     display: block;
@@ -126,3 +127,50 @@ h2 {
   transform: rotate(180deg);
 }
 
+.JavaScript-level {
+  margin-top: 7.5rem;
+}
+
+.range-slider__band {
+  background-color: transparent;
+  background-image: url("../img/range.svg");
+  height: 14px;
+}
+
+.range-slider__band--color {
+  background-color: transparent;
+  background-image: url("../img/activ-range.svg");
+}
+
+.range-slider__handle {
+  background-color: transparent;
+  background-image: url("../img/Rounded.svg");
+  width: 23px;
+  height: 26px;
+  top: 5px;
+}
+
+.range-slider__tiks div:nth-child(3) {
+  display: none;
+}
+
+.range-slider__options p {
+  text-align: left;
+}
+
+.range-slider__options p:last-child {
+  text-align: right;
+}
+
+.range-slider__options p:last-child::after {
+  display: none;
+}
+
+.range-slider__options p::after {
+  bottom: -23px;
+  height: 19px;
+}
+
+.range-slider__options p.active {
+  color: #50649a;
+}

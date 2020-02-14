@@ -5,14 +5,21 @@ var App = {
     this.select();
     this.rangeSlider();
     this.navMobile();
+    this.animateScroll();
   },
 
   select: function() {
-    for (let value of $(".select__list li")) {
+    let check = 0;
+
+    for (let i = 0; i < $(".select__list li").length; i++) {
       //если заранее выбран год, то подстановка года в titile
-      if ($(value).hasClass("active")) {
+      let elem = $(".select__list li")[i];
+      if ($(elem).hasClass("active")) {
+        check = 1;
+        $(".input_hidden").val(Number($(elem).html()));
+        console.log($(".input_hidden").val());
         $(".select__title")
-          .html($(value).html())
+          .html($(elem).html())
           .css("color", "#000")
           .addClass("check");
       }
@@ -37,91 +44,34 @@ var App = {
 
     $(".select__list li").click(e => {
       let newTitle = $(e.target); // присвоить titile выбранный год
+      $(".input_hidden").val(Number($(e.target).html()));
       $(".select__title")
         .html(newTitle[0].dataset.age)
         .css("color", "#000")
         .addClass("check");
-
-      for (let value of $(".select__list li")) {
-        if ($(value).hasClass("active")) {
-          if ($(e.target) !== $(value)) {
-            $(value).removeClass("active");
-          }
-        }
+      if (check === 0) {
+        check = 1;
+        $(e.target).addClass("active");
+      } else {
+        $(".simplebar-content")
+          // $(".select__list")
+          .children()
+          .removeClass("active");
+        $(e.target).addClass("active");
       }
-      $(e.target).addClass("active");
     });
   },
 
   rangeSlider: () => {
-    $(() => {
-      $("#slider").slider(); // инициализация
-      $("#slider").slider("option", "value", 70);
-      let bandColor = $(".range-slider__band-color");
-      let selection = $("#slider").slider("value");
-      let position = selection + "%";
-      let opt = [0, 26, 51, 77];
-      bandColor.css("width", position);
-
-      for (let value of opt) {
-        // подсветка текста если заранее задано положение ползунка
-        if (selection >= value) {
-          let elem = $("[data-value=" + value + "]")[0];
-
-          for (let value1 of $(".range-slider__option p")) {
-            if ($(value1).hasClass("active")) {
-              if ($(value) !== $(value1)) {
-                $(value1).removeClass("active");
-              }
-            }
-          }
-          $(elem).addClass("active");
-        }
-      }
-
-      $(".ui-slider-handle").mousedown(() => {
-        // подсветка текста при движении, закрашивание полосы
-        this.onmousemove = e => {
-          selection = $("#slider").slider("value");
-          position = selection + "%";
-          bandColor.css("width", position);
-
-          for (let value of opt) {
-            if (selection >= value) {
-              let elem = $("[data-value=" + value + "]")[0];
-
-              for (let value1 of $(".range-slider__option p")) {
-                if ($(value1).hasClass("active")) {
-                  if ($(value) !== $(value1)) {
-                    $(value1).removeClass("active");
-                  }
-                }
-              }
-              $(elem).addClass("active");
-            }
-          }
-        };
-      });
-
-      $(".range-slider__option p").click(e => {
-        // выставление ползунка при нажатии на текст
-        let value = $(e.target)[0].dataset.value;
-        if (value == 77) {
-          value = 100;
-        }
-        position = value + "%";
-        $("#slider").slider("option", "value", value);
-        bandColor.css("width", position);
-
-        for (let value of $(".range-slider__option p")) {
-          if ($(value).hasClass("active")) {
-            if ($(e.target) !== $(value)) {
-              $(value).removeClass("active");
-            }
-          }
-        }
-        $(e.target).addClass("active");
-      });
+    let MyRangeSlider = new RangeSlider({
+      tiks: 4,
+      tiksName: [
+        "Не владею",
+        "Использую готовые решения",
+        "Использую готовые решения и умею их переделывать",
+        "Пишу сложный JS с нуля"
+      ],
+      element: document.getElementById("range-slider")
     });
   },
 
@@ -148,6 +98,18 @@ var App = {
         }
       });
     }
+  },
+
+  animateScroll: () => {
+    $(".nav a").on("click", function(event) {
+      event.preventDefault();
+      let id = $(this).attr("href");
+      let position = $(id).offset().top;
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        position = $(id).offset().top - 51;
+      }
+      $("body,html").animate({ scrollTop: position }, 1500);
+    });
   }
 };
 

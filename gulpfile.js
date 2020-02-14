@@ -9,8 +9,8 @@ var gulp = require("gulp"),
   composer = require("gulp-uglify/composer"),
   uglify = composer(uglifyes, console),
   browserSync = require("browser-sync"),
-  del = require("del");
-babel = require("gulp-babel");
+  del = require("del"),
+  babel = require("gulp-babel");
 
 var paths = { src: "app/", dist: "dist/assets/template/" },
   src = {
@@ -27,29 +27,43 @@ var paths = { src: "app/", dist: "dist/assets/template/" },
   };
 
 gulp.task("sass", function() {
-  return (
-    gulp
-      .src(["app/sass/app.scss"])
-      .pipe(sass().on("error", sass.logError))
-      .pipe(concat("profile.min.css"))
-      .pipe(prefixer())
-      // .pipe(cssmin())
-      .pipe(gulp.dest(dist.sass))
-  );
+  return gulp
+    .src([
+      "app/libs/simplebar.css",
+      "app/libs/range.slider.min.css",
+      "app/sass/app.scss"
+    ])
+    .pipe(sass().on("error", sass.logError))
+    .pipe(concat("profile.min.css"))
+    .pipe(prefixer())
+    .pipe(cssmin())
+    .pipe(gulp.dest(dist.sass));
 });
 
-gulp.task("js", function() {
-  return (
-    gulp
-      .src(["app/scripts/*.js"])
-      // .pipe(uglify())
-      // .pipe(babel({
-      //     presets: ['@babel/env']
-      // }))
-      .pipe(concat("profile.min.js"))
-      .pipe(gulp.dest(dist.js))
-  );
-});
+gulp.task(
+  "js",
+  gulp.series(
+    function() {
+      return gulp
+        .src(["app/scripts/script.js"])
+        .pipe(uglify())
+        .pipe(
+          babel({
+            presets: ["@babel/preset-env"]
+          })
+        )
+        .pipe(concat("script.babel.js"))
+        .pipe(gulp.dest("app/scripts"));
+    },
+    function() {
+      return gulp
+        .src(["app/libs/*.js", "app/scripts/script.babel.js"])
+        .pipe(uglify())
+        .pipe(concat("profile.min.js"))
+        .pipe(gulp.dest(dist.js));
+    }
+  )
+);
 
 gulp.task("img", function() {
   return gulp
@@ -66,15 +80,11 @@ gulp.task("html", function() {
     .pipe(browserSync.reload({ stream: true }));
 });
 
-// очистка папки с готовым проектом
 gulp.task("clean", function() {
   return del.sync("dist");
 });
 
-gulp.task(
-  "build",
-  gulp.parallel("clean", "html", "sass", "js", "img")
-);
+gulp.task("build", gulp.parallel("clean", "html", "sass", "js", "img"));
 
 gulp.task("browser-sync", function() {
   browserSync({
@@ -93,7 +103,9 @@ gulp.task(
     gulp
       .watch(src.sass, gulp.parallel("sass"))
       .on("change", browserSync.reload);
-    gulp.watch(src.js, gulp.parallel("js")).on("change", browserSync.reload);
+    gulp
+      .watch("app/scripts/script.js", gulp.parallel("js"))
+      .on("change", browserSync.reload);
     gulp.watch(src.img, gulp.parallel("img")).on("change", browserSync.reload);
   })
 );

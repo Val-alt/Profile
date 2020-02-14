@@ -5,16 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
-      rel="stylesheet"
-      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-    />
-    <link
       href="https://fonts.googleapis.com/css?family=Roboto:100,300,400&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel=" stylesheet "
-      href=" https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css "
     />
     <link rel="stylesheet" href="assets/template/styles/profile.min.css" />
     <title>Profile</title>
@@ -74,13 +66,12 @@
 
           <div class="personal-info-form animate-input">
             <div>
-              <input
-                id="form-Name"
-                name="form-Name"
-                value="Алтынова Валентина Александровна"
-                required
-              /><label for="form-Name">ФИО</label>
+              <input id="form-Name" name="form-Name" value="" required /><label
+                for="form-Name"
+                >ФИО</label
+              >
             </div>
+            <input type="number" class="input_hidden" name="form-Age">
             <div class="select">
               <div class="select__title" tabindex="0">Год рождения</div>
               <ul
@@ -94,7 +85,7 @@
                 <li data-age="1999">
                   1999
                 </li>
-                <li data-age="1998">
+                <li data-age="1998" >
                   1998
                 </li>
                 <li data-age="1997">
@@ -109,7 +100,7 @@
                 <li data-age="1994">
                   1994
                 </li>
-                <li data-age="1993" class="active">
+                <li data-age="1993">
                   1993
                 </li>
                 <li data-age="1992">
@@ -124,23 +115,21 @@
               </ul>
             </div>
             <div>
-              <input id="form-Address" required value="г. Днепр" /><label
+              <input id="form-Address" required value="" /><label
                 for="form-Address"
                 >Место проживания</label
               >
             </div>
             <div>
-              <input id="form-Skype" required value="live:val.altynova" /><label
-                for="form-Skype"
+              <input id="form-Skype" required value="" /><label for="form-Skype"
                 >Skype</label
               >
             </div>
             <div>
-              <input
-                id="form-E-mail"
-                required
-                value="val.altynova@gmail.com"
-              /><label for="form-E-mail">E-mail</label>
+              <input id="form-E-mail" required value="" /><label
+                for="form-E-mail"
+                >E-mail</label
+              >
             </div>
           </div>
         </div>
@@ -227,68 +216,7 @@
             />
           </svg>
           <h2>Уровень владения JavaScript</h2>
-          <div class="range-slider">
-            <div class="range-slider__option">
-              <p data-value="0">Не владею</p>
-              <p data-value="26">Использую готовые решения</p>
-              <p data-value="51">
-                Использую готовые решения и умею их переделывать
-              </p>
-              <p data-value="77">Пишу сложный JS с&nbsp;нуля</p>
-            </div>
-            <div class="range-slider__band">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="770px"
-                height="15px"
-              >
-                <path
-                  fill-rule="evenodd"
-                  opacity="0.102"
-                  fill="rgb(28, 28, 28)"
-                  d="M-0.000,14.855 L-0.000,11.857 L769.670,0.863 L769.670,14.855 L-0.000,14.855 Z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="770px"
-                height="14px"
-                class="range-slider__band-color"
-              >
-                <defs>
-                  <linearGradient
-                    id="PSgrad_0"
-                    x1="0%"
-                    x2="100%"
-                    y1="0%"
-                    y2="0%"
-                  >
-                    <stop
-                      offset="0%"
-                      stop-color="rgb(204,177,241)"
-                      stop-opacity="1"
-                    />
-                    <stop
-                      offset="100%"
-                      stop-color="rgb(67,89,147)"
-                      stop-opacity="1"
-                    />
-                  </linearGradient>
-                </defs>
-                <path
-                  fill-rule="evenodd"
-                  fill="rgb(28, 28, 28)"
-                  d="M-0.000,14.012 L-0.000,11.007 L770.014,-0.012 L770.014,14.012 L-0.000,14.012 Z"
-                />
-                <path
-                  fill="url(#PSgrad_0)"
-                  d="M-0.000,14.012 L-0.000,11.007 L770.014,-0.012 L770.014,14.012 L-0.000,14.012 Z"
-                />
-              </svg>
-              <div id="slider"></div>
-            </div>
+          <div id="range-slider">
           </div>
         </div>
       </fieldset>
@@ -314,11 +242,7 @@
 
           <div class="about-form animate-input">
             <div>
-              <textarea id="textarea" required>
-Вакансия понравилась тем, что мои навыки подходят к перечисленным требованиям, присутствует перспектива интересных задач, в которых я смогу проявить себя и продолжить развивать свои профессиональные навыки.
-Тестовое задание оказалось интересным и сильно затянуло.
-Надеюсь на продуктивное продолжительное сотрудничество.</textarea
-              >
+              <textarea id="textarea" required></textarea>
               <label for="textarea">Понравилась тем, что...</label>
             </div>
             <p><input type="submit" value="Готово" class="btn-about" /></p>
@@ -327,14 +251,6 @@
       </fieldset>
     </form>
 
-    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
     <script src="assets/template/scripts/profile.min.js"></script>
   </body>
 </html>

@@ -145,3 +145,10 @@
 .simplebar-scrollbar::before {
   background: #d9d9d9;
 }
+
+.input_hidden {
+  visibility: hidden !important;
+  width: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+}
